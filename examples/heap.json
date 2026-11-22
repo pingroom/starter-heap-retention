@@ -1,0 +1,74 @@
+{
+  "heapId": "paper-catalog",
+  "title": "Catalog heap snapshot",
+  "context": "Declare reference semantics from the documented exporter.",
+  "objects": [
+    {
+      "id": "catalog",
+      "bytes": 100
+    },
+    {
+      "id": "cache",
+      "bytes": 40
+    },
+    {
+      "id": "shared",
+      "bytes": 80
+    },
+    {
+      "id": "leaf",
+      "bytes": 20
+    },
+    {
+      "id": "orphan",
+      "bytes": 10
+    }
+  ],
+  "roots": [
+    "catalog"
+  ],
+  "categories": [
+    {
+      "id": "member",
+      "label": "Owned members",
+      "meaning": "Ordinary owning field references."
+    },
+    {
+      "id": "observer",
+      "label": "Observer references",
+      "meaning": "Non-owning cache observers."
+    }
+  ],
+  "references": [
+    {
+      "from": "catalog",
+      "to": "cache",
+      "category": "member"
+    },
+    {
+      "from": "catalog",
+      "to": "shared",
+      "category": "member"
+    },
+    {
+      "from": "cache",
+      "to": "shared",
+      "category": "observer"
+    },
+    {
+      "from": "shared",
+      "to": "leaf",
+      "category": "member"
+    },
+    {
+      "from": "leaf",
+      "to": "shared",
+      "category": "member"
+    },
+    {
+      "from": "orphan",
+      "to": "orphan",
+      "category": "observer"
+    }
+  ]
+}
